@@ -19,6 +19,7 @@ public class ScheduleJobsModule extends AbstractModule implements AkkaGuiceSuppo
 	protected void configure() {
 		bindActor(HelloActor.class, HelloActor.NAME);
 		bind(QuartzSchedulerExtension.class).toProvider(SchedulerJobInitializer.class);
+		bind(QuartzSchedulerHelper.class).asEagerSingleton();
 	}
 
 
