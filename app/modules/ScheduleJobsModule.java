@@ -1,5 +1,6 @@
 package modules;
 
+import akka.CleanupRunner;
 import akka.HelloActor;
 import akka.actor.ActorSystem;
 import akka.actor.ExtendedActorSystem;
@@ -18,8 +19,9 @@ public class ScheduleJobsModule extends AbstractModule implements AkkaGuiceSuppo
 	@Override
 	protected void configure() {
 		bindActor(HelloActor.class, HelloActor.NAME);
-		bind(QuartzSchedulerExtension.class).toProvider(SchedulerJobInitializer.class);
+		bindActor(CleanupRunner.class, CleanupRunner.NAME);
 		bind(QuartzSchedulerHelper.class).asEagerSingleton();
+		bind(QuartzSchedulerExtension.class).toProvider(SchedulerJobInitializer.class);
 	}
 
 

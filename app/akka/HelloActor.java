@@ -24,6 +24,7 @@ public class HelloActor extends AbstractLoggingActor {
 	@Override
 	public Receive createReceive() {
 		LOG.info("--------createReceive()-------");
+		log().info("createReceive ----------------------------------------");
 		return receiveBuilder().match(String.class, s -> {
 			LOG.info("Received String message: {}", s);
 		}).matchAny(o -> LOG.info("received unknown message")).build();
