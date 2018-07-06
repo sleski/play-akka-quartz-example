@@ -19,5 +19,6 @@ public class CleanupRunner extends UntypedActor {
 	@Override
 	public void onReceive(Object message) {
 		LOG.info("----------- >Running cleanup of temporary files <-------------------");
+		System.out.println("-------------------");
 	}
 }
