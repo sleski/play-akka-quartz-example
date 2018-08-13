@@ -3,3 +3,5 @@
 //TODO:
 -akka-quartz-scheduler
 -actors
+
+`sbt run`

@@ -19,10 +19,6 @@ public class HelloActor extends AbstractLoggingActor {
 		LOG.info("-----------------------------------");
 		LOG.info("HelloActor was created");
 		LOG.info("-----------------------------------");
-
-		receiveBuilder().match(String.class, s -> {
-			log().info("=============================" + s);
-		}).build();
 	}
 
 	@Override

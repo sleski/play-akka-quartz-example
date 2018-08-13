@@ -12,6 +12,7 @@
 hs_err_pid*
 
 target
+project/target
 build
 dist
 .gradle
