@@ -1,6 +1,5 @@
 package modules;
 
-import akka.CleanupRunner;
 import akka.HelloActor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -12,6 +11,7 @@ import play.api.Configuration;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ public class QuartzSchedulerHelper {
 	@Inject
 	public QuartzSchedulerHelper(ActorSystem registry, QuartzSchedulerExtension quartzSchedulerExtension, Configuration configuration) {
 
-		List<String> actors = Arrays.asList(HelloActor.NAME, CleanupRunner.NAME);
+		List<String> actors = Arrays.asList(HelloActor.NAME);
 		for (String name : actors) {
 			ActorRef actor = registry.actorFor(name);
 			schedule(quartzSchedulerExtension, actor, name, RandomStringUtils.randomAlphabetic(10));
@@ -34,7 +34,7 @@ public class QuartzSchedulerHelper {
 	}
 
 	private void schedule(QuartzSchedulerExtension quartzExtension, ActorRef actor, String actorName, String message) {
-		quartzExtension.schedule(actorName, actor, message);
-		LOG.info("Job {} scheduled.", actorName);
+		Date schedule = quartzExtension.schedule(actorName, actor, message);
+		LOG.info("Job {} scheduled at {}.", actorName, schedule);
 	}
 }

@@ -17,28 +17,22 @@ public class HelloActor extends AbstractLoggingActor {
 	@Inject
 	public HelloActor() {
 		LOG.info("-----------------------------------");
-		LOG.info("HelloActor was created");
-		LOG.info("-----------------------------------");
+		LOG.info(NAME + " was created");
+
+		receiveBuilder().match(String.class, s -> {
+			log().info("Received String message: {}", s);
+		}).matchAny(o -> log().info("received unknown message")).build();
 	}
+
+
 
 	@Override
 	public Receive createReceive() {
-		System.out.println("------------------------");
 		LOG.info("--------createReceive()-------");
 		log().info("createReceive ----------------------------------------");
 		return receiveBuilder().match(String.class, s -> {
 			log().info("Received String message: {}", s);
 		}).matchAny(o -> log().info("received unknown message")).build();
 	}
-
-	@Override
-	public void postStop() throws Exception {
-
-		log().info("----------->POST STOP<----------");
-
-		super.postStop();
-	}
-
-
 
 }
