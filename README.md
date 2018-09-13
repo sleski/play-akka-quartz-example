@@ -1,7 +1,3 @@
 # play-akka-quartz-example
 
-//TODO:
--akka-quartz-scheduler
--actors
-
-`sbt run`
+Example how to use https://github.com/enragedginger/akka-quartz-scheduler in Java https://www.playframework.com/
