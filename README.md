@@ -1,6 +1,6 @@
 # play-akka-quartz-example
 
-##TODO:
+## TODO:
 -akka-quartz-scheduler ✓
 
 -one actor call another ✗
